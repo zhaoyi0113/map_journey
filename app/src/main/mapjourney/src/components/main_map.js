@@ -35,7 +35,7 @@ export default class MainMap extends Component {
 var style={
   width: '100%',
   margin: '0 auto',
-  height: '800px'
+  height: '1000px'
 }
 
 MainMap.propTypes = {

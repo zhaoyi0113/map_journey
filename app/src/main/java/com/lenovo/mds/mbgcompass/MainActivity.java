@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setLoadWithOverviewMode(true);
 
+
         webView.loadUrl("file:///android_asset/index.html");
     }
 }

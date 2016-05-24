@@ -19,8 +19,7 @@ const store = createStore(reducers);
 
 const examples = (
   <div>
-    <h1>React-Leaflet examples</h1>
-    <h2>Popup with Marker</h2>
+    
     <MainMap value={store.getState()} />
     </div>
   );
