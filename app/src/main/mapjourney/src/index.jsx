@@ -5,9 +5,9 @@ import './style/main.css';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 import Provider from 'react-redux';
+import {Router, Route, IndexRoute} from 'react-router';
 import { createStore } from 'redux';
 import reducers from './reducers/reducers';
 
@@ -17,11 +17,9 @@ import MainMap from './components/main_map';
 const store = createStore(reducers);
 
 
-const examples = (
-  <div>
-    
-    <MainMap value={store.getState()} />
-    </div>
-  );
- 
-render(examples, document.getElementById('app'));
+render(
+    <Router>
+      <Route path="/" component={MainMap}>
+
+      </Route>
+    </Router>, document.getElementById('app'));

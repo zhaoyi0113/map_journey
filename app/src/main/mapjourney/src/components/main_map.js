@@ -14,7 +14,7 @@ export default class MainMap extends Component {
   }
 
   render() {
-    const position = [this.props.value.lat, this.props.value.lng];
+    const position = [this.state.lat, this.state.lng];
     return (
       <Map center={position} zoom={this.state.zoom} style={style}>
         <TileLayer
