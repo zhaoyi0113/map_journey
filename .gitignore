@@ -9,3 +9,5 @@
 /build
 /captures
 app/src/main/mapjourney/node_modules/*
+app/src/main/mapjourney/dist
+app/src/main/mapjourney/dist/*

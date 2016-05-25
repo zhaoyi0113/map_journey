@@ -28,6 +28,7 @@ class MainMap extends Component {
           </Popup>
         </Marker>
       </Map>
+        
     );
   }
 
