@@ -1,4 +1,4 @@
-export default function counter(state = 0, action) {
+export default function country(state, action) {
   switch (action.type) {
     case 'MALAYSIA':
       return countries['MALAYSIA']
@@ -9,10 +9,14 @@ export default function counter(state = 0, action) {
   }
 }
 
+
 const countries = {
 	'MALAYSIA': {lat: 3.139298,
-      			lng: 101.686652 },
+      			lng: 101.686652,
+                zoom: 13},
     'THAILAND': {lat: 3.139298,
-      			lng: 101.686652 }
+      			lng: 101.686652,
+                zoom: 13 }
 
 }
+

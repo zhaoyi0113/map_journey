@@ -1,22 +1,23 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { connect } from 'react-redux';
 
-export default class MainMap extends Component {
+class MainMap extends Component {
   constructor(props) {
     super(props);
     console.log(props);
-    this.state = {
-      lat: 3.139298,
-      lng: 101.686652,
-      zoom: 13,
-    };
+    // this.state = {
+    //   lat: 3.139298,
+    //   lng: 101.686652,
+    //   zoom: 13,
+    // };
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng];
+    const position = [this.props.country.lat, this.props.country.lng];
     return (
-      <Map center={position} zoom={this.state.zoom} style={style}>
+      <Map center={position} zoom={this.props.country.zoom} style={style}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -31,6 +32,14 @@ export default class MainMap extends Component {
   }
 
 }
+
+const mapStateToProps = function(store) {
+  return {
+    country: store.country
+  }
+}
+
+export default connect(mapStateToProps)(MainMap)
 
 var style={
   width: '100%',
