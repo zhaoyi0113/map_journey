@@ -13,6 +13,7 @@ import reducers from './reducers';
 
 import MainMap from './components/MainMap';
 
+import StationMap from './components/station_map';
 
 const store = createStore(reducers);
 

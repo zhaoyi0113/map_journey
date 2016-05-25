@@ -4,9 +4,11 @@
 
 import { combineReducers } from 'redux'
 import country from './reducers'
+import vendors from './vendors'
 
 const Countries = combineReducers({
-    country: country
+    country: country,
+    vendors: vendors
 })
 
 export default Countries
