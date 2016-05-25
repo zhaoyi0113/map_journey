@@ -11,7 +11,7 @@ import {Router, Route, IndexRoute} from 'react-router';
 import { createStore } from 'redux';
 import reducers from './reducers';
 
-import MainMap from './components/main_map';
+import MainMap from './components/MainMap';
 
 
 const store = createStore(reducers);

@@ -54,6 +54,10 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader?presets=es2015'
         },
+        {
+            test: /\.scss$/,
+            loaders: ["style", "css", "sass"]
+        },
         { test: /\.css$/, loader: 'style-loader!css-loader' },
         { test: /\.png$/, loader: "url-loader?limit=100000" },
         { test: /\.jpg$/, loader: "file-loader" },

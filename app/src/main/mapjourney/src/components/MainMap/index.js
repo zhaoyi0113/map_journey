@@ -2,16 +2,12 @@
 import React, { Component, PropTypes } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { connect } from 'react-redux';
+import s from './mainMap.scss';
 
 class MainMap extends Component {
   constructor(props) {
     super(props);
     console.log(props);
-    // this.state = {
-    //   lat: 3.139298,
-    //   lng: 101.686652,
-    //   zoom: 13,
-    // };
   }
 
   render() {
