@@ -13,7 +13,7 @@ import reducers from './reducers';
 
 import MainMap from './components/MainMap';
 
-import StationMap from './components/station_map';
+import StationMap from './components/StationMap';
 
 const store = createStore(reducers);
 
@@ -21,7 +21,7 @@ const store = createStore(reducers);
 render(
     <Provider store={store}>
     <Router>
-      <Route path="/" component={MainMap}>
+      <Route path="/" component={StationMap}>
 
       </Route>
     </Router>
