@@ -60,7 +60,7 @@ const overlayContainerStyle = {
 const overlayStyle = {
   width: '300px',
   margin: '0 auto',
-  background: '#3684CE',
+  'background-color': 'rgba(57,74,129,0.7)',
   height: '50px',
   'border-radius': '25px'
 
