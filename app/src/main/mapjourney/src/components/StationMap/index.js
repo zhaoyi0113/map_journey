@@ -42,29 +42,35 @@ class StationMap extends Component {
         const position = [this.props.country.lat, this.props.country.lng];
         return (
             <div>
-            <Map
-                center = {position}
-                zoom = {this.props.country.zoom} style={style}
-                ref='map'>
-                <TileLayer
-                  attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
+                <Map
+                    center = {position}
+                    zoom = {this.props.country.zoom} style={style}
+                    ref='map'>
+                    <TileLayer
+                      attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
 
-                    {
-                        this.props.country.vendors.map(vendor =>{
-                            // console.log(vendor);
-                            return vendor.stations.map(station => {
-                                const pos = [station.lat, station.lng]
-                                // console.log(pos);
+                        {
+                            this.props.country.vendors.map(vendor =>{
+                                // console.log(vendor);
+                                return vendor.stations.map(station => {
+                                    const pos = [station.lat, station.lng]
+                                    // console.log(pos);
 
-                                return(
-                                    <Marker  position={pos} icon={greenIcon}/>
-                                )
+                                    return(
+                                        <Marker  position={pos} icon={greenIcon}/>
+                                    )
+                                })
                             })
-                        })
-                    }
+                        }
 
-            </Map>
+                </Map>
+
+                <div style={overlayContainerStyle}>
+                    <div style={selectStyle}>
+                        
+                    </div>
+                </div>
             </div>
         )
 
@@ -93,10 +99,26 @@ export default connect(mapStateToProps)(StationMap)
 var style = {
     width: '100%',
     margin: '0 auto',
-    height: '100vh',
-    height: '1500'
+    // '-webkit-height': '100vh',
+    // '-ms-height': '100%',
+    // '-moz-height': '100%'
+    height: '100vh'
 }
 
-var markerIcon = {
-    iconSize: [10,10]
+
+const selectStyle = {
+    width: '300px',
+    margin: '0 auto',
+    background: '#3684CE',
+    height: '50px',
+    'border-radius': '25px',
+    display: 'block'
 }
+
+const overlayContainerStyle = {
+    width: '100%',
+    height: '100px',
+    position: 'absolute',
+    top: '50px'
+}
+
