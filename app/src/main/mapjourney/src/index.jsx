@@ -21,7 +21,7 @@ const store = createStore(reducers);
 render(
     <Provider store={store}>
     <Router>
-      <Route path="/" component={StationMap}>
+      <Route path="/" component={MainMap}>
 
       </Route>
     </Router>

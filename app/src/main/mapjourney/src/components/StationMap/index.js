@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom'
 import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
 import {connect} from 'react-redux';
 import L from 'leaflet';
+import Select from 'react-select';
 
 class StationMap extends Component {
 
@@ -49,7 +50,6 @@ class StationMap extends Component {
                     <TileLayer
                       attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                       url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
-
                         {
                             this.props.country.vendors.map(vendor =>{
                                 // console.log(vendor);
@@ -63,13 +63,12 @@ class StationMap extends Component {
                                 })
                             })
                         }
-
                 </Map>
 
                 <div style={overlayContainerStyle}>
-                    <div style={selectStyle}>
+                    <Select style={selectStyle} placeholder='Select Vendor'>
                         
-                    </div>
+                    </Select>
                 </div>
             </div>
         )
@@ -117,7 +116,7 @@ const selectStyle = {
 
 const overlayContainerStyle = {
     width: '100%',
-    height: '100px',
+    height: '50px',
     position: 'absolute',
     top: '50px'
 }
