@@ -7,7 +7,7 @@ import Select from 'react-select';
 import 'react-select/less/default.less'
 import './stationMap.less'
 import {selectVendorAction} from '../../actions/station_actions.js'
-
+import Button from 'react-button'
 
 class StationMap extends Component {
 
@@ -44,7 +44,7 @@ class StationMap extends Component {
     vendorSelectChanged(val){
         console.log('select ', val);
 
-        this.props.selectVendor({name:val.value});
+        this.props.selectVendor({name:val.value, label: val.value});
     }
 
     render() {
@@ -75,12 +75,17 @@ class StationMap extends Component {
                 </Map>
 
                 <div className="overlay-container">
-                    <Select placeholder={this.props.currentVendor.name}
+                    <Select style={selectStyle} dropdownStyle={selectStyle}
+                        placeholder={this.props.currentVendor.label}
+                        value={this.props.currentVendor.label}
                         options={this.options}
                         optionRender={renderOption}
                         onChange={this.vendorSelectChanged.bind(this)} >
                         
                     </Select>
+                </div>
+                <div className='control-panel'>
+                    <Button className=''></Button>
                 </div>
             </div>
         )
@@ -120,3 +125,11 @@ const renderOption = function(option) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(StationMap)
 
+const selectStyle = {
+    width: '100%',
+    margin: '0 auto',
+    background: '#3684CE',
+    height: '50px',
+    'border-radius': '25px',
+    'line-height': '50px'
+}
