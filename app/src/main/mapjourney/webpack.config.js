@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 const PATHS = {
     react: path.join(__dirname, 'node_modules/react/dist/react.min.js'),
@@ -88,6 +89,10 @@ module.exports = {
             "process.env": {
                 NODE_ENV: JSON.stringify("production")
             }
+        }),
+        new WebpackShellPlugin({
+            onBuildStart:['echo "Webpack Start"'],
+            onBuildEnd:['cp ./dist/app.bundle.js ../assets/dist/app.bundle.js']
         })
     ],
     devServer: {
