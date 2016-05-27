@@ -1,8 +1,3 @@
-/**
- *
- * Created by yzzhao on 5/25/16.
- */
-
 import React,  {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom'
 import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
@@ -10,6 +5,7 @@ import {connect} from 'react-redux';
 import L from 'leaflet';
 import Select from 'react-select';
 import 'react-select/less/default.less'
+import './stationMap.less'
 import {selectVendorAction} from '../../actions/station_actions.js'
 
 class StationMap extends Component {
@@ -56,8 +52,7 @@ class StationMap extends Component {
             <div>
                 <Map
                     center = {position}
-                    zoom = {this.props.country.zoom} style={style}
-                    ref='map'>
+                    zoom = {this.props.country.zoom} className="map" ref='map'>
                     <TileLayer
                       attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                       url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
@@ -78,7 +73,7 @@ class StationMap extends Component {
                         }
                 </Map>
 
-                <div style={overlayContainerStyle}>
+                <div className="overlay-container">
                     <Select style={selectStyle} dropdownStyle={selectStyle} placeholder={this.props.currentVendor.name}
                         options={this.options}
                         optionRender={renderOption}
@@ -119,36 +114,15 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const renderOption = function(option) {
-    return "<span>{option.label}</span>"
+    return (<span>{option.label}</span>)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(StationMap)
 
-
-var style = {
-    width: '100%',
-    margin: '0 auto',
-    // '-webkit-height': '100vh',
-    // '-ms-height': '100%',
-    // '-moz-height': '100%'
-    // height: '100vh',
-    height: '1800px',
-    padding: '0'
-}
-
-
 const selectStyle = {
-    width: '50%',
+    width: '100%',
     margin: '0 auto',
     background: '#3684CE',
     height: '50px',
     'border-radius': '25px'
 }
-
-const overlayContainerStyle = {
-    width: '100%',
-    height: '50px',
-    position: 'absolute',
-    top: '50px'
-}
-
