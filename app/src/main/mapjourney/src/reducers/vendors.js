@@ -15,7 +15,6 @@ export default function Vendor(state, action) {
     }
 }
 
-
 export const Vendors = {
 
     'MALAYSIA': {

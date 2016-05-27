@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.Menu;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.WebView;
@@ -22,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.webView);
         setupWebView();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void setupWebView(){

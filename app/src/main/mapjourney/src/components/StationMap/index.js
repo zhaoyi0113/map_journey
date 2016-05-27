@@ -62,7 +62,6 @@ class StationMap extends Component {
                       attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                       url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
                         {
-
                             this.props.country.vendors.map(vendor =>{
                                 console.log('current vendor', this.props.currentVendor.name, vendor.name);
                                 if('ALL' !== this.props.currentVendor.name && vendor.name !== this.props.currentVendor.name){
@@ -70,7 +69,6 @@ class StationMap extends Component {
                                 }
                                 return vendor.stations.map(station => {
                                     const pos = [station.lat, station.lng]
-
 
                                     return(
                                         <Marker  position={pos} icon={greenIcon}/>
@@ -81,9 +79,10 @@ class StationMap extends Component {
                 </Map>
 
                 <div style={overlayContainerStyle}>
-                    <Select style={selectStyle} dropdownStyle={selectStyle} placeholder='Select Vendor'
+                    <Select style={selectStyle} dropdownStyle={selectStyle} placeholder={this.props.currentVendor.name}
                         options={this.options}
-                        onChange={this.vendorSelectChanged.bind(this)}>
+                        optionRender={renderOption}
+                        onChange={this.vendorSelectChanged.bind(this)} >
                         
                     </Select>
                 </div>
@@ -118,6 +117,11 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
+
+const renderOption = function(option) {
+    return "<span>{option.label}</span>"
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(StationMap)
 
 
@@ -127,12 +131,14 @@ var style = {
     // '-webkit-height': '100vh',
     // '-ms-height': '100%',
     // '-moz-height': '100%'
-    height: '100vh'
+    // height: '100vh',
+    height: '1800px',
+    padding: '0'
 }
 
 
 const selectStyle = {
-    width: '300px',
+    width: '50%',
     margin: '0 auto',
     background: '#3684CE',
     height: '50px',
