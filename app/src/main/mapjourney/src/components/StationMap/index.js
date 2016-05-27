@@ -50,7 +50,7 @@ class StationMap extends Component {
     render() {
         const position = [this.props.country.lat, this.props.country.lng];
         return (
-            <div>
+            <div style={{height: '100%'}}>
                 <Map
                     center = {position}
                     zoom = {this.props.country.zoom} className="map" ref='map'>
