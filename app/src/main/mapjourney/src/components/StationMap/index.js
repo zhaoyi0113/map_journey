@@ -74,7 +74,7 @@ class StationMap extends Component {
                 </Map>
 
                 <div className="overlay-container">
-                    <Select style={selectStyle} dropdownStyle={selectStyle} placeholder={this.props.currentVendor.name}
+                    <Select dropdownStyle={selectStyle} placeholder={this.props.currentVendor.name}
                         options={this.options}
                         optionRender={renderOption}
                         onChange={this.vendorSelectChanged.bind(this)} >
