@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import {Router, Route, IndexRoute} from 'react-router';
 import { createStore } from 'redux';
 import reducers from './reducers';
-import { browserHistory } from 'react-router'
+// import { browserHistory } from 'react-router'
 import MainMap from './components/MainMap';
 
 import StationMap from './components/StationMap';
@@ -19,7 +19,7 @@ const store = createStore(reducers);
 
 render(
     <Provider store={store}>
-        <Router history={browserHistory}>
+        <Router>
           <Route path="/" component={StationMap}>
 
           </Route>
