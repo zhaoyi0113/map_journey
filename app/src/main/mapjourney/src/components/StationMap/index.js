@@ -74,7 +74,7 @@ class StationMap extends Component {
                 </Map>
 
                 <div className="overlay-container">
-                    <Select dropdownStyle={selectStyle} placeholder={this.props.currentVendor.name}
+                    <Select placeholder={this.props.currentVendor.name}
                         options={this.options}
                         optionRender={renderOption}
                         onChange={this.vendorSelectChanged.bind(this)} >
@@ -119,10 +119,3 @@ const renderOption = function(option) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(StationMap)
 
-const selectStyle = {
-    width: '100%',
-    margin: '0 auto',
-    background: '#3684CE',
-    height: '50px',
-    'border-radius': '25px'
-}
