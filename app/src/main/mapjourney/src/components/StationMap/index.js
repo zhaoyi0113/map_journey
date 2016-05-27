@@ -9,6 +9,7 @@ import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
 import {connect} from 'react-redux';
 import L from 'leaflet';
 import Select from 'react-select';
+import 'react-select/less/default.less'
 
 class StationMap extends Component {
 
@@ -38,6 +39,9 @@ class StationMap extends Component {
 
     }
 
+    vendorSelectChanged(val){
+        console.log('select ', val);
+    }
 
     render() {
         const position = [this.props.country.lat, this.props.country.lng];
@@ -66,7 +70,7 @@ class StationMap extends Component {
                 </Map>
 
                 <div style={overlayContainerStyle}>
-                    <Select style={selectStyle} placeholder='Select Vendor'>
+                    <Select style={selectStyle} placeholder='Select Vendor' options={options} onChange={this.vendorSelectChanged.bind(this)}>
                         
                     </Select>
                 </div>
@@ -75,6 +79,11 @@ class StationMap extends Component {
 
     }
 }
+
+const options = [
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' }
+];
 
 const greenIcon = L.icon({
     iconUrl: 'public/icons/icon_copy2.png',
@@ -110,8 +119,7 @@ const selectStyle = {
     margin: '0 auto',
     background: '#3684CE',
     height: '50px',
-    'border-radius': '25px',
-    display: 'block'
+    'border-radius': '25px'
 }
 
 const overlayContainerStyle = {
