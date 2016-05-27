@@ -7,7 +7,6 @@
 export default function Vendor(state, action) {
     switch (action.type) {
         case 'MALAYSIA':
-
             return Vendors['MALAYSIA']
         case 'THAILAND':
             return Vendors['THAILAND']
@@ -17,7 +16,7 @@ export default function Vendor(state, action) {
 }
 
 
-const Vendors = {
+export const Vendors = {
 
     'MALAYSIA': {
         lat: 3.139298,

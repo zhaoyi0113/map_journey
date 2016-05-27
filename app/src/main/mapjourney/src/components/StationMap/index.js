@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 import L from 'leaflet';
 import Select from 'react-select';
 import 'react-select/less/default.less'
+import {selectVendorAction} from '../../actions/station_actions.js'
 
 class StationMap extends Component {
 
@@ -17,21 +18,25 @@ class StationMap extends Component {
         super(props);
     }
 
-    componentDidMount(){
+    componentWillMount(){
+        this.options = this.props.country.vendors.map(vendor => {
+            return { value: vendor['name'], label: vendor['name'] }
+        })
+    }
+
+    addCustomizedMarkers(){
         var mapElem = ReactDOM.findDOMNode(this.refs.map)
         console.log(this.refs.map.leafletElement)
 
+        this.props.country.vendors.map(vendor =>{
+            // console.log(vendor);
+            return vendor.stations.map(station => {
+                const pos = [station.lat, station.lng]
+                // console.log(pos);
+                L.marker(pos,{icon: greenIcon}).addTo(this.refs.map.leafletElement)
 
-        // this.props.country.vendors.map(vendor =>{
-        //     // console.log(vendor);
-        //     return vendor.stations.map(station => {
-        //         const pos = [station.lat, station.lng]
-        //         // console.log(pos);
-        //         L.marker(pos,{icon: greenIcon}).addTo(this.refs.map.leafletElement)
-        //
-        //     })
-        // })
-
+            })
+        })
     }
 
     setupMarker(marker){
@@ -41,6 +46,8 @@ class StationMap extends Component {
 
     vendorSelectChanged(val){
         console.log('select ', val);
+
+        this.props.selectVendor({name:val.value});
     }
 
     render() {
@@ -55,11 +62,15 @@ class StationMap extends Component {
                       attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                       url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
                         {
+
                             this.props.country.vendors.map(vendor =>{
-                                // console.log(vendor);
+                                console.log('current vendor', this.props.currentVendor.name, vendor.name);
+                                if('ALL' !== this.props.currentVendor.name && vendor.name !== this.props.currentVendor.name){
+                                    return
+                                }
                                 return vendor.stations.map(station => {
                                     const pos = [station.lat, station.lng]
-                                    // console.log(pos);
+
 
                                     return(
                                         <Marker  position={pos} icon={greenIcon}/>
@@ -70,7 +81,9 @@ class StationMap extends Component {
                 </Map>
 
                 <div style={overlayContainerStyle}>
-                    <Select style={selectStyle} placeholder='Select Vendor' options={options} onChange={this.vendorSelectChanged.bind(this)}>
+                    <Select style={selectStyle} dropdownStyle={selectStyle} placeholder='Select Vendor'
+                        options={this.options}
+                        onChange={this.vendorSelectChanged.bind(this)}>
                         
                     </Select>
                 </div>
@@ -79,11 +92,6 @@ class StationMap extends Component {
 
     }
 }
-
-const options = [
-    { value: 'one', label: 'One' },
-    { value: 'two', label: 'Two' }
-];
 
 const greenIcon = L.icon({
     iconUrl: 'public/icons/icon_copy2.png',
@@ -95,13 +103,22 @@ const greenIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-const mapStateToProps = function (store) {
+const mapStateToProps = function (state) {
     return {
-        country: store.vendors
+        country: state.vendors,
+        currentVendor: state.selectVendor
     }
 }
 
-export default connect(mapStateToProps)(StationMap)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        selectVendor: (vendor) => {
+
+            dispatch(selectVendorAction(vendor))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(StationMap)
 
 
 var style = {

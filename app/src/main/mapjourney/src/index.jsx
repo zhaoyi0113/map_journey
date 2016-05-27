@@ -17,7 +17,6 @@ import StationMap from './components/StationMap';
 
 const store = createStore(reducers);
 
-
 render(
     <Provider store={store}>
     <Router>
