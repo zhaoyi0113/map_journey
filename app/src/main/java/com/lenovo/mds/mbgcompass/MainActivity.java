@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setLoadWithOverviewMode(true);
+
+//        webView.setWebChromeClient( new WebChromeClient());
+
         webView.loadUrl("file:///android_asset/index.html");
     }
 

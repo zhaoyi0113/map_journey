@@ -18,9 +18,9 @@ export default function Vendor(state, action) {
 export const Vendors = {
 
     'MALAYSIA': {
-        lat: 3.139298,
-        lng: 101.686652,
-        zoom: 7,
+        lat: -5.970255,
+        lng: 103.075114,
+        zoom: 6,
         vendors: [
             {
                 name: 'Ingram Micro(Brightpoint)',
@@ -38,8 +38,7 @@ export const Vendors = {
                     {
                         name: 'Ingram Micro (Malaysia) Sdn Bhd  - Sabah',
                         lat: 5.970255,
-                        lng: 116.075114,
-                        zoom: 13
+                        lng: 116.075114
                     },
                     {
                         name: 'SCT Distribution Sdn Bhd',
