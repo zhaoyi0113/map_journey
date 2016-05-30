@@ -10,8 +10,6 @@ import { Provider } from 'react-redux';
 import {Router, Route, IndexRoute} from 'react-router';
 import { createStore } from 'redux';
 import reducers from './reducers';
-// import { browserHistory } from 'react-router'
-import MainMap from './components/MainMap';
 
 import StationMap from './components/StationMap';
 
