@@ -47,6 +47,18 @@ class StationMap extends Component {
         this.props.selectVendor({name:val.value, label: val.value});
     }
 
+    getVendorIcon(vendor){
+        return L.icon({
+            iconUrl: vendor.icon,
+            // shadowUrl: 'leaf-shadow.png',
+            iconSize:     [48, 72], // size of the icon
+            shadowSize:   [50, 64], // size of the shadow
+            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
+    }
+
     render() {
         const position = [this.props.country.lat, this.props.country.lng];
         return (
@@ -60,14 +72,15 @@ class StationMap extends Component {
                         {
                             this.props.country.vendors.map(vendor =>{
                                 console.log('current vendor', this.props.currentVendor.name, vendor.name);
-                                if('ALL' !== this.props.currentVendor.name && vendor.name !== this.props.currentVendor.name){
+                                if('Select Vendor' !== this.props.currentVendor.name && vendor.name !== this.props.currentVendor.name){
                                     return
                                 }
+                                
                                 return vendor.stations.map(station => {
                                     const pos = [station.lat, station.lng]
 
                                     return(
-                                        <Marker  position={pos} icon={greenIcon}/>
+                                        <Marker  position={pos} icon={this.getVendorIcon(vendor)}/>
                                     )
                                 })
                             })
