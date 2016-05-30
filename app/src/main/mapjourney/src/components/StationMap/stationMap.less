@@ -11,7 +11,7 @@ html, body, #app{
 
 .overlay-container {
     width: 70%;
-    height: 70px;
+    height: 52px;
     position: absolute;
     top: 10px;
     left: 50%;
@@ -40,9 +40,21 @@ html, body, #app{
 }
 
 .control-panel {
-    width: 10%;
-    height: 50%;
+    right: 10px;
+    top: 50%;
+    margin-top: -40%;
+    width: 50px;
+    height: 30%;
     position: absolute;
+    display: flex;
+    flex-direction: column;
 
-    background: '#3684CE';
+    button {
+        width: 48px;
+        height: 48px;
+        background: #3684CE;
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
 }
