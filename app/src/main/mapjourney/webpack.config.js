@@ -21,8 +21,9 @@ module.exports = {
     },
     watch: true,
     devtool: 'source-map',
+    relativeUrls: true,
     resolve: {
-        extensions: ['', '.js', '.jsx', '.css'],
+        extensions: ['', '.js', '.jsx', '.css', '.less'],
         modulesDirectories: ['node_modules'],
         alias: {
             leaflet_css: __dirname + '/node_modules/leaflet/dist/leaflet.css',

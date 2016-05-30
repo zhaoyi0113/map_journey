@@ -30,6 +30,7 @@
     "jshint-loader": "^0.8.3",
     "leaflet": "^0.7.7",
     "normalize.css": "^3.0.2",
+    "public": "^0.1.2",
     "react": "^15.1.0",
     "react-button": "^1.2.1",
     "react-dom": "^15.0.2",

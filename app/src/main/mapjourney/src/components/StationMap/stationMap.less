@@ -5,7 +5,7 @@ html, body, #app{
 .map {
     width: 100%;
     margin: 0 auto;
-    height: 100%;
+    height: 1800px;
     padding: 0;
 }
 
@@ -49,12 +49,27 @@ html, body, #app{
     display: flex;
     flex-direction: column;
 
-    button, img {
+    button {
         width: 48px;
         height: 48px;
         background: #3684CE;
         border-radius: 5px;
         margin-top: 5px;
         margin-bottom: 5px;
+
     }
+
+    .order-button-normal{
+        background: url('http://localhost:9091/public/icons/Group%202.png') no-repeat;
+        background-size: cover;
+
+    }
+
+    .order-button-active{
+        background-image: url('http://localhost:9091/public/icons/Group%203.png');
+        background-size: cover;
+    }
+
+
 }
+

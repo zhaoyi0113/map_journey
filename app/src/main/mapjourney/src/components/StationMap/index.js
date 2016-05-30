@@ -13,6 +13,7 @@ class StationMap extends Component {
 
     constructor(props) {
         super(props);
+
     }
 
     componentWillMount(){
@@ -102,13 +103,14 @@ class StationMap extends Component {
                         
                     </Select>
                 </div>
-                
+        {/*
                 <div className='control-panel'>
-                    <button> <img src='public/icons/Group 2.png'/> </button>
+                    <button className='order-button-normal'></button>
                     <button> B </button>
                     <button> C </button>
                     <button> D </button>
                 </div>
+               */}
             </div>
         )
 
