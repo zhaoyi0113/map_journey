@@ -104,7 +104,7 @@ class StationMap extends Component {
                 </div>
                 
                 <div className='control-panel'>
-                    <button> A </button>
+                    <button> <img src='public/icons/Group 2.png'/> </button>
                     <button> B </button>
                     <button> C </button>
                     <button> D </button>
