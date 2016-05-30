@@ -21,6 +21,11 @@ class StationMap extends Component {
         })
     }
 
+    componentDidMount() {
+        let x = document.getElementById("overlay-container").getElementsByTagName("input");
+        x[0].setAttribute("readonly", true);
+    }
+
     addCustomizedMarkers(){
         var mapElem = ReactDOM.findDOMNode(this.refs.map)
         console.log(this.refs.map.leafletElement)
@@ -87,7 +92,7 @@ class StationMap extends Component {
                         }
                 </Map>
 
-                <div className="overlay-container">
+                <div className="overlay-container" id="overlay-container">
                     <Select style={selectStyle} dropdownStyle={selectStyle}
                         placeholder={this.props.currentVendor.label}
                         value={this.props.currentVendor.label}
