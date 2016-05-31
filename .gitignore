@@ -13,3 +13,6 @@ app/src/main/mapjourney/node_modules
 app/src/main/mapjourney/dist
 app/src/main/mapjourney/dist/*
 app/src/main/mapjourney/*.log
+app/src/main/assets/dist
+app/src/main/assets/dist/*
+
