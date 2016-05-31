@@ -58,9 +58,9 @@ class StationMap extends Component {
     }
 
     changeCategorySelector(category){
-        let selected = this.state.category[category].select
+        let selected = this.state.category[category]
         let currentState = this.state
-        currentState.category[category].select = !selected
+        currentState.category[category] = !selected
         this.setState(currentState)
         this.props.selectMapCategory({category: category})
     }
@@ -113,9 +113,10 @@ class StationMap extends Component {
                 <div className='control-panel'>
                     {
                         actions.map(x => {
+                            console.log(x, this.state.category[x])
                             return(<a className={
                                 this.state.category[x] ?
-                                x + "-button-normal": x + "-button-active"}
+                                x + "-button-active": x + "-button-normal"}
                                 onClick={this.changeCategorySelector.bind(this,x)}> </a>)
                         })
                     }
@@ -141,6 +142,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(selectVendorAction(vendor))
         },
         selectMapCategory: (category) => {
+            console.log('select category ', category)
             dispatch(selectMapCategory(category))
         }
     }
