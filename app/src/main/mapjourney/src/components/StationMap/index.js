@@ -7,6 +7,7 @@ import 'react-select/less/default.less'
 import './stationMap.less'
 import {selectVendorAction} from '../../actions/station_actions'
 import {selectMapCategory} from '../../actions/actions'
+import SearchVendorStation from './search_vendor_station'
 
 class StationMap extends Component {
 
@@ -24,21 +25,11 @@ class StationMap extends Component {
     }
 
     componentWillMount(){
-        this.options = this.props.country.vendors.map(vendor => {
-            return { id: vendor['id'], value: vendor['name'], label: vendor['name'] }
-        })
     }
 
     componentDidMount() {
         let x = document.getElementById("overlay-container").getElementsByTagName("input");
         x[0].setAttribute("readonly", true);
-    }
-
-    vendorSelectChanged(val){
-        if(val == null){
-            val = {id: 0}
-        }
-        this.props.selectVendor(val);
     }
 
     getVendorIcon(vendor){
@@ -115,17 +106,7 @@ class StationMap extends Component {
                             })
                         }
                 </Map>
-
-                <div className="overlay-container" id="overlay-container">
-                    <Select style={selectStyle} dropdownStyle={selectStyle}
-                        placeholder={this.props.currentVendor.label}
-                        value={this.props.currentVendor.label}
-                        options={this.options}
-                        optionRender={renderOption}
-                        onChange={this.vendorSelectChanged.bind(this)} >
-
-                    </Select>
-                </div>
+                <SearchVendorStation/>
 
                 <div className='control-panel'>
                     {
@@ -168,17 +149,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const renderOption = function(option) {
-    return (<span>{option.label}</span>)
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(StationMap)
-
-const selectStyle = {
-    width: '100%',
-    margin: '0 auto',
-    background: '#3684CE',
-    height: '50px',
-    'border-radius': '25px',
-    'line-height': '50px'
-}
