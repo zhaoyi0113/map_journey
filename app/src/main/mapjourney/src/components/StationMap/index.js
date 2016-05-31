@@ -34,7 +34,6 @@ class StationMap extends Component {
     }
 
     vendorSelectChanged(val){
-        console.log('select vendor', val)
         if(val == null){
             val = {id: 0}
         }
@@ -79,15 +78,16 @@ class StationMap extends Component {
                         {
                             this.props.country.vendors.map(vendor => {
 
-                                if(vendor.id == 0 || vendor.id !== this.props.currentVendor.id){
+                                if(vendor.id == 0){
                                     return
                                 }
-
                                 if(this.state.category['vendor'] === false){
                                     return
                                 }
+                                if(vendor.id !== this.props.currentVendor.id && this.props.currentVendor.id !== 0){
+                                  return
+                                }
                                 let icon = this.getIcon(vendor.head_icon)
-
                                 return (<Marker position={[vendor.lat, vendor.lng]}
                                             icon={icon} />)
                             })
