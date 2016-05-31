@@ -103,14 +103,13 @@ class StationMap extends Component {
                         
                     </Select>
                 </div>
-        {/*
+                
                 <div className='control-panel'>
                     <button className='order-button-normal'></button>
                     <button> B </button>
                     <button> C </button>
                     <button> D </button>
                 </div>
-               */}
             </div>
         )
 
