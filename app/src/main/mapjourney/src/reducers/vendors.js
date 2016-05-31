@@ -31,7 +31,7 @@ export const Vendors = {
                 id: 1,
                 name: 'Ingram Micro(Brightpoint)',
                 icon: 'public/icons/icon_copy2.png',
-                head_icon: 'public/icons/icon_copy2.png',
+                head_icon: 'public/icons/editor_flag_triangle_notification_glyph copy 4.png',
                 lat: 3.088074,
                 lng: 101.637523,
                 stations: [
@@ -60,10 +60,10 @@ export const Vendors = {
             {
                 id: 2,
                 name: 'Mobile Technic',
-                icon: 'public/icons/icon copy 7.png',
+                icon: 'public/icons/icon copy 24.png',
                 lat: 3.106414,
                 lng: 101.646771,
-                head_icon: 'public/icons/icon copy 7.png',
+                head_icon: 'public/icons/editor_flag_triangle_notification_glyph copy 3.png',
                 stations: [
                     {
                         name: 'MYM-001 Mobile Technic Petaling Jaya',
@@ -93,7 +93,7 @@ export const Vendors = {
                 icon: 'public/icons/icon copy 12.png',
                 lat: 3.063379,
                 lng: 101.695077,
-                head_icon: 'public/icons/icon copy 12.png',
+                head_icon: 'public/icons/editor_flag_triangle_notification_glyph copy 5.png',
                 stations: [
                     {
                         name: 'MYO-001 OSR Seri Petaling',

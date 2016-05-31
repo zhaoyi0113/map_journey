@@ -34,9 +34,9 @@ class StationMap extends Component {
     }
 
     vendorSelectChanged(val){
-        console.log('select ', val);
-        if (val === null){
-
+        console.log('select vendor', val)
+        if(val == null){
+            val = {id: 0}
         }
         this.props.selectVendor(val);
     }
@@ -77,14 +77,22 @@ class StationMap extends Component {
                       attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                       url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
                         {
-                            // this.props.country.vendors.map(vendor => {
-                            //     if(0 !== this.props.currentVendor.id && vendor.id !== this.props.currentVendor.id){
-                            //         return
-                            //     }
-                            //     return ( <Marker position={[vendor.lat, vendor.lng]}
-                            //                 icon={this.getIcon(vendor.head_icon)} />)
-                            // })
+                            this.props.country.vendors.map(vendor => {
 
+                                if(vendor.id == 0 || vendor.id !== this.props.currentVendor.id){
+                                    return
+                                }
+
+                                if(this.state.category['vendor'] === false){
+                                    return
+                                }
+                                let icon = this.getIcon(vendor.head_icon)
+
+                                return (<Marker position={[vendor.lat, vendor.lng]}
+                                            icon={icon} />)
+                            })
+                        }
+                        {
                             this.props.country.vendors.map(vendor =>{
                                 if(0 !== this.props.currentVendor.id && vendor.id !== this.props.currentVendor.id){
                                     return
@@ -110,10 +118,10 @@ class StationMap extends Component {
 
                     </Select>
                 </div>
+
                 <div className='control-panel'>
                     {
                         actions.map(x => {
-                            console.log(x, this.state.category[x])
                             return(<a className={
                                 this.state.category[x] ?
                                 x + "-button-active": x + "-button-normal"}
@@ -142,7 +150,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(selectVendorAction(vendor))
         },
         selectMapCategory: (category) => {
-            console.log('select category ', category)
+
             dispatch(selectMapCategory(category))
         }
     }
