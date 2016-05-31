@@ -18,7 +18,8 @@ class StationMap extends Component {
                 order: false,
                 vendor: false,
                 model: false
-            }
+            },
+          lightsOff: false
         }
     }
 
@@ -64,6 +65,13 @@ class StationMap extends Component {
         this.props.selectMapCategory({category: category})
     }
 
+    handleLightToogleClick() {
+        const lightsOff = this.state.lightsOff;
+        this.setState({
+          lightsOff: !lightsOff
+        })
+    }
+
     render() {
         const position = [this.props.country.lat, this.props.country.lng];
         const actions = ['order', 'vendor', 'model'];
@@ -71,7 +79,7 @@ class StationMap extends Component {
             <div style={{height: '100%'}}>
                 <Map
                     center = {position}
-                    zoom = {this.props.country.zoom} className="map" ref='map'>
+                    zoom = {this.props.country.zoom} className={`map${this.state.lightsOff? ' lights-off': ''}`} ref='map'>
                     <TileLayer
                       attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                       url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
@@ -128,6 +136,10 @@ class StationMap extends Component {
                                 onClick={this.changeCategorySelector.bind(this,x)}> </a>)
                         })
                     }
+
+                </div>
+
+                <div className='light-toogle' onClick={this.handleLightToogleClick.bind(this)}>
 
                 </div>
             </div>
