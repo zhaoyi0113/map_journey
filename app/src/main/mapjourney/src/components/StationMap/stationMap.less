@@ -50,8 +50,8 @@ html, body, #app{
     flex-direction: column;
 
     a {
-        width: 48px;
-        height: 48px;
+        width: 80%;
+        height: 80%;
         background: #3684CE;
         border-radius: 5px;
         margin-top: 5px;
@@ -61,8 +61,10 @@ html, body, #app{
 
     .order-button-normal{
         background: url('../../../public/icons/Group 2.png') no-repeat;
-        background-size: cover;
-
+        background-size: contain;
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
     }
 
     .order-button-active{

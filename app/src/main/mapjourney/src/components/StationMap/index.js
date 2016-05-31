@@ -102,7 +102,6 @@ class StationMap extends Component {
                         
                     </Select>
                 </div>
-
                 <div className='control-panel'>
                     <a className='order-button-normal'></a>
                     <a className="order-button-normal"></a>
