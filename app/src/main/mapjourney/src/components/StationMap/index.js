@@ -56,7 +56,7 @@ class StationMap extends Component {
         this.props.selectMapCategory({category: category})
     }
 
-    handleLightToogleClick() {
+    handleLightToggleClick() {
         const lightsOff = this.state.lightsOff;
         this.setState({
           lightsOff: !lightsOff
@@ -120,7 +120,7 @@ class StationMap extends Component {
 
                 </div>
 
-                <div className='light-toogle' onClick={this.handleLightToogleClick.bind(this)}>
+                <div className='light-toggle' onClick={this.handleLightToggleClick.bind(this)}>
 
                 </div>
             </div>
