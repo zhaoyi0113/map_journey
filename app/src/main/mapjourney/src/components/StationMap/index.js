@@ -7,7 +7,6 @@ import Select from 'react-select';
 import 'react-select/less/default.less'
 import './stationMap.less'
 import {selectVendorAction} from '../../actions/station_actions.js'
-import Button from 'react-button'
 
 class StationMap extends Component {
 
@@ -103,12 +102,11 @@ class StationMap extends Component {
                         
                     </Select>
                 </div>
-                
+
                 <div className='control-panel'>
-                    <button className='order-button-normal'></button>
-                    <button> B </button>
-                    <button> C </button>
-                    <button> D </button>
+                    <a className='order-button-normal'></a>
+                    <a className="order-button-normal"></a>
+                    <a className="order-button-normal"></a>
                 </div>
             </div>
         )
