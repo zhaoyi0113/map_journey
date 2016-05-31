@@ -24,7 +24,7 @@ class StationMap extends Component {
 
     componentWillMount(){
         this.options = this.props.country.vendors.map(vendor => {
-            return { value: vendor['name'], label: vendor['name'] }
+            return { id: vendor['id'], value: vendor['name'], label: vendor['name'] }
         })
     }
 
@@ -38,12 +38,16 @@ class StationMap extends Component {
         if (val === null){
 
         }
-        this.props.selectVendor({name:val.value, label: val.value});
+        this.props.selectVendor(val);
     }
 
     getVendorIcon(vendor){
+        return this.getIcon(vendor.icon)
+    }
+
+    getIcon(icon){
         return L.icon({
-            iconUrl: vendor.icon,
+            iconUrl: icon,
             // shadowUrl: 'leaf-shadow.png',
             iconSize:     [16, 28], // size of the icon
             shadowSize:   [20, 30], // size of the shadow
@@ -73,12 +77,18 @@ class StationMap extends Component {
                       attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                       url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
                         {
+                            // this.props.country.vendors.map(vendor => {
+                            //     if(0 !== this.props.currentVendor.id && vendor.id !== this.props.currentVendor.id){
+                            //         return
+                            //     }
+                            //     return ( <Marker position={[vendor.lat, vendor.lng]}
+                            //                 icon={this.getIcon(vendor.head_icon)} />)
+                            // })
+
                             this.props.country.vendors.map(vendor =>{
-                                console.log('current vendor', this.props.currentVendor.name, vendor.name);
-                                if('Select Vendor' !== this.props.currentVendor.name && vendor.name !== this.props.currentVendor.name){
+                                if(0 !== this.props.currentVendor.id && vendor.id !== this.props.currentVendor.id){
                                     return
                                 }
-
                                 return vendor.stations.map(station => {
                                     const pos = [station.lat, station.lng]
 

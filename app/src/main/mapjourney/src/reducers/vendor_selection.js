@@ -9,6 +9,6 @@ export default function VendorSelection(state, action){
         case 'SELECT_VENDOR':
             return action.vendor
         default:
-            return {name:'Select Vendor', label:'Select Vendor'}
+            return {id: 0, name:'Select Vendor', label:'Select Vendor'}
     }
 }

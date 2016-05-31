@@ -23,12 +23,17 @@ export const Vendors = {
         zoom: 6,
         vendors: [
             {
-              name: 'Select Vendor',
+                id: 0,
+                name: 'Select Vendor',
                 stations:[]
             },
             {
+                id: 1,
                 name: 'Ingram Micro(Brightpoint)',
                 icon: 'public/icons/icon_copy2.png',
+                head_icon: 'public/icons/icon_copy2.png',
+                lat: 3.088074,
+                lng: 101.637523,
                 stations: [
                     {
                         name: 'Ingram Micro (Malaysia) Sdn Bhd - Selangor',
@@ -53,8 +58,12 @@ export const Vendors = {
                 ]
             },
             {
+                id: 2,
                 name: 'Mobile Technic',
                 icon: 'public/icons/icon copy 7.png',
+                lat: 3.106414,
+                lng: 101.646771,
+                head_icon: 'public/icons/icon copy 7.png',
                 stations: [
                     {
                         name: 'MYM-001 Mobile Technic Petaling Jaya',
@@ -79,8 +88,12 @@ export const Vendors = {
                 ]
             },
             {
+                id: 3,
                 name: 'OSR(OMC)',
                 icon: 'public/icons/icon copy 12.png',
+                lat: 3.063379,
+                lng: 101.695077,
+                head_icon: 'public/icons/icon copy 12.png',
                 stations: [
                     {
                         name: 'MYO-001 OSR Seri Petaling',
