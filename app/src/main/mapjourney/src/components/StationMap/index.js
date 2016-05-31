@@ -12,15 +12,12 @@ class StationMap extends Component {
 
     constructor(props) {
         super(props);
-        this.clickOrder = this.clickOrder.bind(this)
-        this.clickVendor = this.clickVendor.bind(this)
-        this.clickModel = this.clickModel.bind(this)
         this.state={
             category:
             {
-                order: {normalClassName: 'order-button-normal',activeClassName:'category order-button-active', select: false},
-                vendor: {normalClassName: 'vendor-button-normal',activeClassName:'category vendor-button-active', select: false},
-                model: {normalClassName: 'model-button-normal',activeClassName:'category model-button-active', select: false}
+                order: false,
+                vendor: false,
+                model: false
             }
         }
     }
@@ -56,18 +53,6 @@ class StationMap extends Component {
         });
     }
 
-    clickOrder(e){
-        this.changeCategorySelector('order')
-    }
-
-    clickVendor(e){
-        this.changeCategorySelector('vendor')
-    }
-
-    clickModel(e){
-        this.changeCategorySelector('model')
-    }
-
     changeCategorySelector(category){
         let selected = this.state.category[category].select
         let currentState = this.state
@@ -78,6 +63,7 @@ class StationMap extends Component {
 
     render() {
         const position = [this.props.country.lat, this.props.country.lng];
+        const actions = ['order', 'vendor', 'model'];
         return (
             <div style={{height: '100%'}}>
                 <Map
@@ -115,20 +101,15 @@ class StationMap extends Component {
                     </Select>
                 </div>
                 <div className='control-panel'>
-                    <a className={
-                            this.state.category.order.select?
-                            this.state.category.order.activeClassName:this.state.category.order.normalClassName}
-                            onClick={this.clickOrder}></a>
-                    <a className={
-                            this.state.category.vendor.select?
-                            this.state.category.vendor.activeClassName:this.state.category.vendor.normalClassName}
-                            onClick={this.clickVendor}
-                    ></a>
-                    <a className={
-                        this.state.category.model.select?
-                        this.state.category.model.activeClassName:this.state.category.model.normalClassName}
-                        onClick={this.clickModel}
-                    ></a>
+                    {
+                        actions.map(x => {
+                            return(<a className={
+                                this.state.category[x] ?
+                                x + "-button-normal": x + "-button-active"}
+                                onClick={this.changeCategorySelector.bind(this,x)}> </a>)
+                        })
+                    }
+
                 </div>
             </div>
         )
