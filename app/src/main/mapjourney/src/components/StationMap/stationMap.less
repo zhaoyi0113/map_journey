@@ -1,77 +1,111 @@
-html, body, #app{
-    height: 100%;
+html, body, #app {
+  height: 100%;
 }
 
 .map {
-    width: 100%;
-    margin: 0 auto;
-    height: 1800px;
-    padding: 0;
+  width: 100%;
+  margin: 0 auto;
+  height: 1800px;
+  padding: 0;
 }
 
 .overlay-container {
-    width: 70%;
-    height: 52px;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    margin-left: -35%;
+  width: 70%;
+  height: 52px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  margin-left: -35%;
 
-    .Select-control {
-        width: 100%;
-        margin: 0 auto;
-        background: #3684CE;
-        height: 50px;
-        border-radius: 25px;
+  .Select-control {
+    width: 100%;
+    margin: 0 auto;
+    background: #3684CE;
+    height: 50px;
+    border-radius: 25px;
 
-        input{
-            padding: 8px 0 8px 12px;
-            height: 100%;
-            line-height: 50px;
-            font-size: 20pt;
-        }
-        .Select-placeholder, .Select-value-label {
-            margin-left: 12px;
-            height: 100%;
-            line-height: 50px;
-            font-size: 10pt;
-        }
+    input {
+      padding: 8px 0 8px 12px;
+      height: 100%;
+      line-height: 50px;
+      font-size: 20pt;
     }
+    .Select-placeholder, .Select-value-label {
+      margin-left: 12px;
+      height: 100%;
+      line-height: 50px;
+      font-size: 10pt;
+    }
+  }
 }
 
 .control-panel {
-    right: 10px;
-    top: 50%;
-    margin-top: -40%;
-    width: 50px;
-    height: 30%;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
+  right: 10px;
+  top: 50%;
+  margin-top: -40%;
+  width: 50px;
+  height: 30%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
 
-    a {
-        width: 80%;
-        height: 80%;
-        background: #3684CE;
-        border-radius: 5px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        display: block;
-    }
+  a {
+    width: 80%;
+    height: 80%;
+    background: #3684CE;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: block;
+  }
 
-    .order-button-normal{
-        background: url('../../../public/icons/Group 2.png') no-repeat;
-        background-size: contain;
-        -webkit-background-size: contain;
-        -moz-background-size: contain;
-        -o-background-size: contain;
-    }
+  .order-button-normal {
+    background: url('../../../public/icons/Group 2.png') no-repeat;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+  }
 
-    .order-button-active{
-        background-image: url('../../../public/icons/Group 3.png');
-        background-size: cover;
-    }
+  .order-button-active {
+    background: url('../../../public/icons/Group 3.png') no-repeat;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+  }
 
+  .vendor-button-normal {
+    background: url('../../../public/icons/Group 8.png') no-repeat;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+  }
+
+  .vendor-button-active {
+    background: url('../../../public/icons/Group 9.png') no-repeat;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+  }
+
+  .model-button-normal {
+    background: url('../../../public/icons/Group 4.png') no-repeat;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+  }
+
+  .model-button-active {
+    background: url('../../../public/icons/Group 5.png') no-repeat;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+  }
 
 }
 

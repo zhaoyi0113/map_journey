@@ -1,18 +1,28 @@
 import React,  {Component, PropTypes} from 'react';
-import ReactDOM from 'react-dom'
 import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
 import {connect} from 'react-redux';
 import L from 'leaflet';
 import Select from 'react-select';
 import 'react-select/less/default.less'
 import './stationMap.less'
-import {selectVendorAction} from '../../actions/station_actions.js'
+import {selectVendorAction} from '../../actions/station_actions'
+import {selectMapCategory} from '../../actions/actions'
 
 class StationMap extends Component {
 
     constructor(props) {
         super(props);
-
+        this.clickOrder = this.clickOrder.bind(this)
+        this.clickVendor = this.clickVendor.bind(this)
+        this.clickModel = this.clickModel.bind(this)
+        this.state={
+            category:
+            {
+                order: {normalClassName: 'order-button-normal',activeClassName:'category order-button-active', select: false},
+                vendor: {normalClassName: 'vendor-button-normal',activeClassName:'category vendor-button-active', select: false},
+                model: {normalClassName: 'model-button-normal',activeClassName:'category model-button-active', select: false}
+            }
+        }
     }
 
     componentWillMount(){
@@ -26,29 +36,11 @@ class StationMap extends Component {
         x[0].setAttribute("readonly", true);
     }
 
-    addCustomizedMarkers(){
-        var mapElem = ReactDOM.findDOMNode(this.refs.map)
-        console.log(this.refs.map.leafletElement)
-
-        this.props.country.vendors.map(vendor =>{
-            // console.log(vendor);
-            return vendor.stations.map(station => {
-                const pos = [station.lat, station.lng]
-                // console.log(pos);
-                L.marker(pos,{icon: greenIcon}).addTo(this.refs.map.leafletElement)
-
-            })
-        })
-    }
-
-    setupMarker(marker){
-
-
-    }
-
     vendorSelectChanged(val){
         console.log('select ', val);
+        if (val === null){
 
+        }
         this.props.selectVendor({name:val.value, label: val.value});
     }
 
@@ -56,12 +48,32 @@ class StationMap extends Component {
         return L.icon({
             iconUrl: vendor.icon,
             // shadowUrl: 'leaf-shadow.png',
-            iconSize:     [30, 52], // size of the icon
+            iconSize:     [16, 28], // size of the icon
             shadowSize:   [20, 30], // size of the shadow
-            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+            iconAnchor:   [22, 64], // point of the icon which will correspond to marker's location
             shadowAnchor: [4, 62],  // the same for the shadow
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
         });
+    }
+
+    clickOrder(e){
+        this.changeCategorySelector('order')
+    }
+
+    clickVendor(e){
+        this.changeCategorySelector('vendor')
+    }
+
+    clickModel(e){
+        this.changeCategorySelector('model')
+    }
+
+    changeCategorySelector(category){
+        let selected = this.state.category[category].select
+        let currentState = this.state
+        currentState.category[category].select = !selected
+        this.setState(currentState)
+        this.props.selectMapCategory({category: category})
     }
 
     render() {
@@ -99,29 +111,30 @@ class StationMap extends Component {
                         options={this.options}
                         optionRender={renderOption}
                         onChange={this.vendorSelectChanged.bind(this)} >
-                        
+
                     </Select>
                 </div>
                 <div className='control-panel'>
-                    <a className='order-button-normal'></a>
-                    <a className="order-button-normal"></a>
-                    <a className="order-button-normal"></a>
+                    <a className={
+                            this.state.category.order.select?
+                            this.state.category.order.activeClassName:this.state.category.order.normalClassName}
+                            onClick={this.clickOrder}></a>
+                    <a className={
+                            this.state.category.vendor.select?
+                            this.state.category.vendor.activeClassName:this.state.category.vendor.normalClassName}
+                            onClick={this.clickVendor}
+                    ></a>
+                    <a className={
+                        this.state.category.model.select?
+                        this.state.category.model.activeClassName:this.state.category.model.normalClassName}
+                        onClick={this.clickModel}
+                    ></a>
                 </div>
             </div>
         )
 
     }
 }
-
-const greenIcon = L.icon({
-    iconUrl: 'public/icons/icon_copy2.png',
-    // shadowUrl: 'leaf-shadow.png',
-    iconSize:     [48, 72], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
 
 const mapStateToProps = function (state) {
     return {
@@ -135,6 +148,9 @@ const mapDispatchToProps = (dispatch) => {
         selectVendor: (vendor) => {
 
             dispatch(selectVendorAction(vendor))
+        },
+        selectMapCategory: (category) => {
+            dispatch(selectMapCategory(category))
         }
     }
 }
