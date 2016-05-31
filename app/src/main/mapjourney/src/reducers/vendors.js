@@ -18,7 +18,7 @@ export default function Vendor(state, action) {
 export const Vendors = {
 
   'MALAYSIA': {
-    lat: -5.970255,
+    lat: 8.970255,
     lng: 103.075114,
     zoom: 6,
     vendors: [
@@ -54,6 +54,45 @@ export const Vendors = {
             name: 'SCT Distribution Sdn Bhd',
             lat: 3.318177,
             lng: 101.576492
+          },
+          {
+            name: 'SNS DOT NET Sdn Bhd',
+            lat: 5.336647,
+            lng: 103.142800
+          },
+          {
+            name: 'Star Connect Communication',
+            lat: 4.233185,
+            lng: 103.421772
+          },
+          {
+            name: 'GTL Electronic S/B',
+            lat: 3.085179,
+            lng: 101.523406
+          },
+          {
+            name: 'M.P.C Mobile Professional Centre',
+            lat: 1.536338,
+            lng: 110.337753
+          },
+          {
+            name: 'Utakhas',
+            lat: 1.454949,
+            lng: 110.458804
+          },
+          {
+            name: 'Alphacon',
+            lat: 4.400461,
+            lng: 113.990901
+          },{
+            name: 'Ingram Micro (Malaysia) Sdn Bhd  - Kuching',
+            lat: 1.507080,
+            lng: 110.375334
+
+          },{
+            name: 'FUTURE POWER SDN BHD',
+            lat: 3.144204,
+            lng: 101.709861
           }
         ]
       },

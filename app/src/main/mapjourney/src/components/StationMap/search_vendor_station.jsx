@@ -23,7 +23,7 @@ class SearchVendorStationComponent extends Component {
 
   vendorSelectChanged(vendor){
     if(vendor == null){
-      vendor = {id:0}
+      vendor = {id:0,value:'Select Vendor', label: 'Select Vendor'}
     }
     this.props.selectVendor(vendor)
   }
