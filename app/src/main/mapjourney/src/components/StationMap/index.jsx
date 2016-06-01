@@ -1,5 +1,5 @@
 import React,  {Component, PropTypes} from 'react';
-import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
+import {Map, TileLayer, Marker, Circle, CircleMarker, Popup} from 'react-leaflet';
 import {connect} from 'react-redux';
 import L from 'leaflet';
 import Select from 'react-select';
@@ -42,7 +42,7 @@ class StationMap extends Component {
             // shadowUrl: 'leaf-shadow.png',
             iconSize:     [16, 28], // size of the icon
             shadowSize:   [20, 30], // size of the shadow
-            iconAnchor:   [22, 64], // point of the icon which will correspond to marker's location
+            iconAnchor:   [6, 28], // point of the icon which will correspond to marker's location
             shadowAnchor: [4, 62],  // the same for the shadow
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
         });
@@ -104,6 +104,20 @@ class StationMap extends Component {
                                     )
                                 })
                             })
+                        }
+                        {
+                          this.props.country.vendors.map(vendor =>{
+                            if(0 !== this.props.currentVendor.id && vendor.id !== this.props.currentVendor.id){
+                              return
+                            }
+                            return vendor.stations.map(station => {
+                              const pos = [station.lat, station.lng]
+
+                              return(
+                                <Circle  center={pos} radius="100000"/>
+                              )
+                            })
+                          })
                         }
                 </Map>
                 <SearchVendorStation/>
