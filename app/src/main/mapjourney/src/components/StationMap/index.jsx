@@ -12,6 +12,7 @@ class StationMap extends Component {
 
     constructor(props) {
         super(props);
+        this.geoFindMe.bind(this);
         this.state={
             category:
             {
@@ -19,7 +20,8 @@ class StationMap extends Component {
                 vendor: false,
                 model: false
             },
-          lightsOff: false
+            lightsOff: false,
+            myLocation: null
         }
     }
 
@@ -29,6 +31,24 @@ class StationMap extends Component {
     componentDidMount() {
         let x = document.getElementById("overlay-container").getElementsByTagName("input");
         x[0].setAttribute("readonly", true);
+        this.geoFindMe();
+    }
+
+    geoFindMe() {
+      if (!navigator.geolocation){
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(this.locationSuccess.bind(this), () => {});
+    }
+  
+    locationSuccess(position) {
+      const latitude  = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      console.log(latitude);
+      console.log(longitude);
+      this.setState({
+        myLocation: [latitude, longitude]
+      })
     }
 
     getVendorIcon(vendor){
@@ -121,6 +141,7 @@ class StationMap extends Component {
                             })
                           })
                         }
+                        {this.state.myLocation && <Marker position={this.state.myLocation} icon={this.getIcon('public/icons/icon_copy2.png')}/> }
                 </Map>
                 <SearchVendorStation/>
 
