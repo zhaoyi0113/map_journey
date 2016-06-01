@@ -2,7 +2,6 @@ import React,  {Component, PropTypes} from 'react';
 import {Map, TileLayer, Marker, Circle, CircleMarker, Popup} from 'react-leaflet';
 import {connect} from 'react-redux';
 import L from 'leaflet';
-import Select from 'react-select';
 import 'react-select/less/default.less'
 import './stationMap.less'
 import {selectVendorAction} from '../../actions/station_actions'

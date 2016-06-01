@@ -36,7 +36,8 @@ class SearchVendorStationComponent extends Component {
                 value={this.props.currentVendor.label}
                 options={this.options}
                 optionRender={renderOption}
-                onChange={this.vendorSelectChanged.bind(this)} >
+                onChange={this.vendorSelectChanged.bind(this)}
+                clearable={false}>
 
         </Select>
       </div>
