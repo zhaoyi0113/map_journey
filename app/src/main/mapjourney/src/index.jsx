@@ -12,14 +12,14 @@ import { createStore } from 'redux';
 import reducers from './reducers';
 
 import StationMap from './components/StationMap';
-
+import HomeComponent from './components/StationMap/home'
 const store = createStore(reducers);
 
 render(
     <Provider store={store}>
         <Router>
-          <Route path="/" component={StationMap}>
-
+          <Route path="/" component={HomeComponent}>
           </Route>
+          <Route path="/map" component={StationMap}/>
         </Router>
     </Provider>, document.getElementById('app'));

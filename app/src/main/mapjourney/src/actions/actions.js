@@ -7,3 +7,11 @@ export const selectMapCategory = (category) => {
   }
 }
 
+export const GOVERN_COUNTRIES = 'GOVERN_COUNTRIES'
+
+export const governCountries = (countries) =>{
+  return {
+    type: GOVERN_COUNTRIES,
+    countries
+  }
+}
