@@ -106,6 +106,9 @@ class StationMap extends Component {
                         }
                         {
                           this.props.country.vendors.map(vendor =>{
+                            if(this.state.lightsOff == false){
+                              return
+                            }
                             if(0 !== this.props.currentVendor.id && vendor.id !== this.props.currentVendor.id){
                               return
                             }
