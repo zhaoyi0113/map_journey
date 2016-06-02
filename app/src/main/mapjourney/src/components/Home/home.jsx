@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import 'react-select/less/default.less'
-import './stationMap.less'
+import './home.less'
 import {Link} from 'react-router';
 
 class HomeComponent extends Component {
@@ -33,16 +33,18 @@ class CountryComponent extends Component {
       <div className="countries-area">
         {
           this.props.countries.map(country => {
-            let bg = '../../../public/icons/'+country.background
+            let bg = '../../../public/icons/' + country.background
             return (
-              <img className="country-area" src={bg}/>
+              <div className="countries-container">
+                <img className="country-area" src={bg}/>
+                <div className="country-info">
+                  {country.name}
+                </div>
+              </div>
             )
           })
         }
       </div>
-
-
-
     )
   }
 }
@@ -58,7 +60,7 @@ export default connect(mapStateToProps)(HomeComponent)
 
 class HeaderComponent extends Component {
 
-  searchMap(){
+  searchMap() {
 
   }
 
@@ -68,7 +70,7 @@ class HeaderComponent extends Component {
         <div className="home-page-title">
           <div className="login-icon"/>
           <div className="title-text">MBG App</div>
-          <Link to="/map" >
+          <Link to="/map">
             <div className="search-icon"></div>
           </Link>
         </div>
@@ -81,14 +83,16 @@ class FooterComponent extends Component {
   render() {
     return (
       <div className="home-footer">
-        <div className="map-button">Map</div>
+        <Link to="/map">
+          <div className="map-button">Map</div>
+        </Link>
         <div className="statistics-button">Statistics</div>
       </div>
     )
   }
 }
 
-const mapStateToCountryProps = function (state){
+const mapStateToCountryProps = function (state) {
   return {
     countries: state.countries,
   }

@@ -12,7 +12,7 @@ import { createStore } from 'redux';
 import reducers from './reducers';
 
 import StationMap from './components/StationMap';
-import HomeComponent from './components/StationMap/home'
+import HomeComponent from './components/Home/home'
 const store = createStore(reducers);
 
 render(

@@ -20,7 +20,7 @@ module.exports = {
         filename: 'app.bundle.js',
     },
     watch: true,
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
     relativeUrls: true,
     resolve: {
         extensions: ['', '.js', '.jsx', '.css', '.less'],
@@ -49,20 +49,20 @@ module.exports = {
 
             {
                 test: /\.html$/,
-                loader: 'file?name=[name].[ext]'
+                loader: 'file?name=[name].[ext]',
             },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader?presets=es2015'
+                loader: 'babel-loader?presets=es2015',
             },
             {
                 test: /\.scss$/,
-                loader: 'style!css?modules!sass'
+                loader: 'style!css?modules!sass',
             },
             {
                 test: /\.less$/,
-                loader: "style!css!less"
+                loader: "style!css!less",
             },
             {test: /\.css$/, loader: 'style-loader!css-loader'},
             {test: /\.png$/, loader: "url-loader?limit=100000"},
