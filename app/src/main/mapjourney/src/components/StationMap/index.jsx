@@ -11,7 +11,7 @@ import SearchVendorStation from './search_vendor_station'
 
 class StationMap extends Component {
 
-    constructor(props) {
+    constructor(props, context) {
         super(props);
         this.geoFindMe.bind(this);
         this.state={
@@ -83,6 +83,10 @@ class StationMap extends Component {
         })
     }
 
+    linkTo(path) {
+      this.context.router.push(path);
+    }
+
     render() {
         const position = [this.props.country.lat, this.props.country.lng];
         const actions = ['order', 'vendor', 'model'];
@@ -110,7 +114,7 @@ class StationMap extends Component {
                                 return (
                                   <Marker position={[vendor.lat, vendor.lng]} icon={icon} >
                                     <Popup>
-                                      <span>Mobile Technic<br/>8</span>
+                                      <span onClick={this.linkTo.bind(this, "/vendor-data")}>Mobile Technic<br/>8</span>
                                     </Popup>
                                   </Marker>
                                 )
@@ -196,5 +200,8 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+StationMap.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(StationMap)

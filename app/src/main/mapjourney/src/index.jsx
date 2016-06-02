@@ -12,7 +12,8 @@ import { createStore } from 'redux';
 import reducers from './reducers';
 
 import StationMap from './components/StationMap';
-import HomeComponent from './components/Home/home'
+import HomeComponent from './components/Home'
+import VendorDataPage from './components/VendorDataPage';
 const store = createStore(reducers);
 
 render(
@@ -21,5 +22,6 @@ render(
           <Route path="/" component={HomeComponent}>
           </Route>
           <Route path="/map" component={StationMap}/>
+          <Route path="/vendor-data" component={VendorDataPage}/>
         </Router>
     </Provider>, document.getElementById('app'));
