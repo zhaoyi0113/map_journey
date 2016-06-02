@@ -8,7 +8,6 @@ import './stationMap.less'
 import {selectVendorAction} from '../../actions/station_actions'
 import {selectMapCategory} from '../../actions/actions'
 import SearchVendorStation from './search_vendor_station'
-import {Link} from 'react-router';
 
 class StationMap extends Component {
 
