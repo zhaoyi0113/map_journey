@@ -36,9 +36,26 @@ class CountryComponent extends Component {
             let bg = '../../../public/icons/' + country.background
             return (
               <div className="countries-container">
-                <img className="country-area" src={bg}/>
+                <img className="country-area" src={bg}></img>
+
                 <div className="country-info">
-                  {country.name}
+                  <div className="country-name">
+                    {country.name}
+                  </div>
+                  <div className="country-statistic">
+                    <div className="vendor">
+                      {country.vendor}
+                    </div>
+                    <div className="vendor-label">
+                      Vendor
+                    </div>
+                    <div className="station">
+                      {country.station}
+                    </div>
+                    <div className="station-label">
+                      Station
+                    </div>
+                  </div>
                 </div>
               </div>
             )

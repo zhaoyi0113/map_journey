@@ -65,25 +65,51 @@
     .country-area {
       width: 100%;
       height: 200px;
-      float: left;
-      //padding-left: 10%;
-      //padding-right: 10%;
-      //padding-top: 5%;
-      //padding-bottom: 5%;
-      background-size: contain;
-      background: url('../../../public/icons/background.png') no-repeat;
+      //background-size: contain;
+      //background: url('../../../public/icons/background.png') no-repeat;
     }
 
     .country-info {
-      width: 70%;
-      height: 100px;
-      line-height: 80px;
-      top: -150px;
+      width: 100%;
+      height: 200px;
+      top: -200px;
       text-align: center;
       position: relative;
-      font-size: xx-large;
+      font-size: x-large;
       color: red;
       font-style: italic;
+      display:flex;
+      align-items: center;
+
+      .country-name{
+        line-height: 200px;
+        height: 95%;
+        width: 70%;
+        border-right: dotted blue 3px;
+      }
+
+      .country-statistic{
+        width: 30%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .vendor{
+          width: 100%;
+        }
+        .vendor-label{
+          width: 100%;
+          color: blue;
+        }
+        .station{
+          width: 100%;
+        }
+        .station-label{
+          width: 100%;
+          color: blue;
+        }
+      }
     }
 
   }
