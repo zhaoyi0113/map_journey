@@ -2,6 +2,7 @@ import React,  {Component, PropTypes} from 'react';
 import {Map, TileLayer, Marker, Circle, CircleMarker, Popup} from 'react-leaflet';
 import {connect} from 'react-redux';
 import L from 'leaflet';
+import {Link} from 'react-router';
 import 'react-select/less/default.less'
 import './stationMap.less'
 import {selectVendorAction} from '../../actions/station_actions'
@@ -63,7 +64,7 @@ class StationMap extends Component {
             shadowSize:   [20, 30], // size of the shadow
             iconAnchor:   [6, 28], // point of the icon which will correspond to marker's location
             shadowAnchor: [4, 62],  // the same for the shadow
-            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            popupAnchor:  [3, -28] // point from which the popup should open relative to the iconAnchor
         });
     }
 
@@ -106,8 +107,13 @@ class StationMap extends Component {
                                   return
                                 }
                                 let icon = this.getIcon(vendor.head_icon)
-                                return (<Marker position={[vendor.lat, vendor.lng]}
-                                            icon={icon} />)
+                                return (
+                                  <Marker position={[vendor.lat, vendor.lng]} icon={icon} >
+                                    <Popup>
+                                      <span>Mobile Technic<br/>8</span>
+                                    </Popup>
+                                  </Marker>
+                                )
                             })
                         }
                         {
@@ -119,7 +125,12 @@ class StationMap extends Component {
                                     const pos = [station.lat, station.lng]
 
                                     return(
-                                        <Marker  position={pos} icon={this.getVendorIcon(vendor)}/>
+                                        <Marker  position={pos} icon={this.getVendorIcon(vendor)}>
+                                          {// <Popup>
+                                            //   <span>Mobile Technic<br/>8</span>
+                                            // </Popup>
+                                          }
+                                        </Marker>
                                     )
                                 })
                             })
