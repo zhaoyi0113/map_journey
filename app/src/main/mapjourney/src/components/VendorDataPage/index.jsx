@@ -31,6 +31,10 @@ class VendorDataPage extends Component {
             <span className={`tab-body${activeTab==="vendor"? ' active': ''}`}
                   onClick={this.switchTab.bind(this, 'vendor')}>Vendor</span>
           </div>
+
+          <div className="content">
+            <h2>Mobile Techic</h2>
+          </div>
         </div>
       </div>     
     )
