@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import './vendorDataPage.less'
 import Navigation from '../Navigatior';
+import Table from '../Table';
 
 class VendorDataPage extends Component {
 
@@ -34,6 +35,7 @@ class VendorDataPage extends Component {
 
           <div className="content">
             <h2>Mobile Techic</h2>
+            <Table/>
           </div>
         </div>
       </div>     
